@@ -1,0 +1,28 @@
+{
+	"name": "generator-projectskeleton",
+	"version": "1.0.0",
+	"description": "A generator for the skeleton for my projects",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"files": [
+		"generators/app"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Kidde82/generator-ProjectSkeleton.git"
+	},
+	"keywords": [
+		"generator"
+	],
+	"author": "Christian Persson <kidde82@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/Kidde82/generator-ProjectSkeleton/issues"
+	},
+	"homepage": "https://github.com/Kidde82/generator-ProjectSkeleton#readme",
+	"dependencies": {
+		"yeoman-generator": "^0.23.3"
+	}
+}
