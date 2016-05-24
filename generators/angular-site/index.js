@@ -1,6 +1,7 @@
 "use strict"
 
 var generators = require("yeoman-generator");
+var helper = require("../../helpers/helper.js");
 
 module.exports = generators.Base.extend({
 	constructor: function () {
@@ -38,7 +39,7 @@ module.exports = generators.Base.extend({
 				this.templatePath("_bower.json"),
 				this.destinationPath("bower.json"),
 				{
-					appName: this.options.appName
+					projectName: helper.toLower(this.options.projectName)
 				});
 		},
 		readme: function () {
@@ -46,7 +47,7 @@ module.exports = generators.Base.extend({
 				this.templatePath("_README.md"),
 				this.destinationPath("README.md"),
 				{
-					appName: this.options.appName
+					projectName: helper.toPascal(this.options.projectName)
 				});
 		},
 		tslint: function () {

@@ -1,5 +1,5 @@
 {
-	"name": "<%= projectName.toLower %>",
+	"name": "<%=projectName%>",
 	"description": "A skeleton for my projects",
 	"main": "index.js",
 	"authors": [
