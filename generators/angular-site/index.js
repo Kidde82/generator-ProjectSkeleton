@@ -24,6 +24,23 @@ module.exports = generators.Base.extend({
 	},
 
 	writing: {
+		bowerrc: function () {
+			this.copy("_.bowerrc", ".bowerrc");
+		},
+		editorconfig: function () {
+			this.copy("_.editorconfig", ".editorconfig");
+		},
+		gitignore: function () {
+			this.copy("_.gitignore", ".gitignore");
+		},
+		bower: function () {
+			this.fs.copyTpl(
+				this.templatePath("_bower.json"),
+				this.destinationPath("bower.json"),
+				{
+					appName: this.options.appName
+				});
+		},
 		readme: function () {
 			this.fs.copyTpl(
 				this.templatePath("_README.md"),
@@ -41,6 +58,7 @@ module.exports = generators.Base.extend({
 	},
 
 	install: function () {
+		// http://yeoman.io/generator/actions_install.html
 	},
 
 	end: function () {

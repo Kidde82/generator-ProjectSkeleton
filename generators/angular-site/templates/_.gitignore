@@ -1,0 +1,8 @@
+.idea
+node_modules
+/build/
+wwwroot/bower_components
+wwwroot/apps
+wwwroot/index.html
+.vscode
+typings/

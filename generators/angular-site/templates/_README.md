@@ -1,2 +1,2 @@
-# <%= appName %>
+# <%= projectName %>
 A skeleton for my projects

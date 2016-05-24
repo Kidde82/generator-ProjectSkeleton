@@ -13,6 +13,17 @@ module.exports = generators.Base.extend({
 	},
 
 	prompting: function () {
+
+		// config to add
+		// description
+		// author
+		// license
+		// keywords
+		// homepage
+
+		// methods to support
+		// tolower
+
 		this.log("Welcome to " + chalk.yellow("MyGeneratorTest"));
 
 		var done = this.async();
@@ -34,8 +45,8 @@ module.exports = generators.Base.extend({
 			},
 			{
 				type: "input",
-				name: "appname",
-				message: "What name should the app have?",
+				name: "projectName",
+				message: "What's the project name'?",
 				when: function (answers) {
 					return answers.generatorType == "angular-site";
 				}
@@ -43,7 +54,7 @@ module.exports = generators.Base.extend({
 			{
 				type: "input",
 				name: "ngappname",
-				message: "What name should the ngapp have?",
+				message: "What's the name of the app?",
 				when: function (answers) {
 					return answers.generatorType == "angular-site";
 				}
@@ -51,7 +62,7 @@ module.exports = generators.Base.extend({
 		]).then(function (answers) {
 			// this.log(answers);
 			this.generatorType = answers.generatorType;
-			this.config.set("appName", answers.appname);
+			this.config.set("projectName", answers.projectName);
 			this.config.set("ngAppName", answers.ngappname);
 			this.config.save();
 			done();
@@ -68,7 +79,7 @@ module.exports = generators.Base.extend({
 		if (this.generatorType == "angular-site") {
 			this.composeWith("projectskeleton:angular-site", {
 				options: {
-					appName: this.config.get("appName"),
+					projectName: this.config.get("projectName"),
 					ngAppName: this.config.get("ngAppName")
 				}
 			});
