@@ -1,21 +1,26 @@
 var _ = require("lodash");
 
-function Helper() {
-	this.toLower = function(str) {
-		return str.toLowerCase();
-	}
+// Result: helloworld
+// TODO: Remove spaces
+String.prototype.lower = function () {
+	return _.lowerCase(this);
+};
 
-	this.toPascal = function(str) {
-		return this.toFirstUppercase(this.toCamel(str));
-	}
+// Result: HELLOWORLD
+String.prototype.upper = function () {
+	return _.upperCase(this);
+};
 
-	this.toFirstUppercase = function(str) {
-		return str[0].toUpperCase () + str.slice(1);
-	}
+// Result: HelloWorld
+String.prototype.pascal = function () {
+	return _.upperFirst(this);
+};
 
-	this.toCamel = function(str) {
-		return _.camelCase(str);
-	}
+// Result: helloWorld
+String.prototype.camel = function () {
+	return _.camelCase(this);
+};
+
+String.prototype.removeWhitespaces = function () {
+	return this.replace(/\s+/g, '');
 }
-
-module.exports = new Helper();

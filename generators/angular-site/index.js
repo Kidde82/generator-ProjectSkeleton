@@ -26,6 +26,18 @@ module.exports = generators.Base.extend({
 
 	writing: {
 		bowerrc: function () {
+			var strLower = "Hello World"; // helloworld
+			console.log(strLower.lower());
+
+			var strUpper = "Hello World"; // HELLOWORLD
+			console.log(strUpper.upper());
+
+			var strPascal = "hello World"; // HelloWorld
+			console.log(strPascal.pascal());
+
+			var strCamel = "Hello World"; // helloWorld
+			console.log(strCamel.camel());
+
 			this.copy("_.bowerrc", ".bowerrc");
 		},
 		editorconfig: function () {
@@ -39,7 +51,7 @@ module.exports = generators.Base.extend({
 				this.templatePath("_bower.json"),
 				this.destinationPath("bower.json"),
 				{
-					projectName: helper.toLower(this.options.projectName)
+					projectName: this.options.projectName
 				});
 		},
 		readme: function () {
@@ -47,7 +59,7 @@ module.exports = generators.Base.extend({
 				this.templatePath("_README.md"),
 				this.destinationPath("README.md"),
 				{
-					projectName: helper.toPascal(this.options.projectName)
+					projectName: this.options.projectName
 				});
 		},
 		tslint: function () {
