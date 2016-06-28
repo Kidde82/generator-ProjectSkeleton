@@ -1,15 +1,15 @@
 {
-	"name": "<%=projectName.lower().removeWhitespaces()%>",
-	"description": "A skeleton for my projects",
+	"name": "<%= projectName.lower().removeWhitespaces() %>",
+	"description": "<%= projectName.sentence() %>",
 	"main": "index.js",
 	"authors": [
-		"Christian Persson <kidde82@gmail.com>"
+		"<%= author %>"
 	],
 	"license": "MIT",
 	"keywords": [
 		"skeleton"
 	],
-	"homepage": "https://github.com/Kidde82/ProjectSkeleton",
+	"homepage": "<%= homepage %>",
 	"moduleType": [
 		"amd"
 	],

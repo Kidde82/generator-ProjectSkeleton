@@ -1,24 +1,24 @@
 {
-  "name": "projectskeleton",
+  "name": "<%= projectName.lower().removeWhitespaces() %>",
   "version": "1.0.0",
-  "description": "A skeleton for my projects",
+  "description": "<%= projectName.sentence() %>",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kidde82/ProjectSkeleton.git"
+    "url": "<%= homepage %>"
   },
   "keywords": [
     "skeleton"
   ],
-  "author": "Christian Persson <kidde82@gmail.com>",
+  "author": "<%= author %>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Kidde82/ProjectSkeleton/issues"
+    "url": "<%= homepage %>/issues"
   },
-  "homepage": "https://github.com/Kidde82/ProjectSkeleton#readme",
+  "homepage": "<%= homepage %>#readme",
   "dependencies": {
     "gulp": "^3.9.1",
     "gulp-typescript": "^2.13.0"

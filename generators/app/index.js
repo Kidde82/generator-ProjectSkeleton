@@ -15,14 +15,8 @@ module.exports = generators.Base.extend({
 	prompting: function () {
 
 		// config to add
-		// description
-		// author
 		// license
 		// keywords
-		// homepage
-
-		// methods to support
-		// tolower
 
 		this.log("Welcome to " + chalk.yellow("MyGeneratorTest"));
 
@@ -58,12 +52,38 @@ module.exports = generators.Base.extend({
 				when: function (answers) {
 					return answers.generatorType == "angular-site";
 				}
+			},
+			{
+				type: "input",
+				name: "author",
+				message: "What's your name?",
+				when: function (answers) {
+					return answers.generatorType == "angular-site";
+				}
+			},
+			{
+				type: "input",
+				name: "homepage",
+				message: "What's the projects homepage?",
+				default: "https://github.com/",
+				when: function (answers) {
+					return answers.generatorType == "angular-site";
+				}
+			},
+			{
+				type: "input",
+				name: "keywords",
+				message: "Project keywords?",
+				when: function (answers) {
+					return answers.generatorType == "angular-site";
+				}
 			}
 		]).then(function (answers) {
 			// this.log(answers);
 			this.generatorType = answers.generatorType;
-			this.config.set("projectName", answers.projectName);
-			this.config.set("ngAppName", answers.ngappname);
+			for(var answer in answers) {
+				this.config.set(answer, answers[answer]);
+			}
 			this.config.save();
 			done();
 		}.bind(this));
@@ -80,7 +100,10 @@ module.exports = generators.Base.extend({
 			this.composeWith("projectskeleton:angular-site", {
 				options: {
 					projectName: this.config.get("projectName"),
-					ngAppName: this.config.get("ngAppName")
+					ngAppName: this.config.get("ngAppName"),
+					author: this.config.get("author"),
+					homepage: this.config.get("homepage"),
+					keywords: this.config.get("keywords")
 				}
 			});
 		}
