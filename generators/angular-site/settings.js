@@ -1,6 +1,9 @@
 exports.values = {
 	apps: [
+		"app",
 		"common",
-		"main"
+		"main",
+		"services",
+		"startpage"
 	]
 }

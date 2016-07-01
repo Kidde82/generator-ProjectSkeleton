@@ -5,7 +5,7 @@ const apps = "apps";
 const assets = "assets";
 
 <%_ for (app in apps) { -%>
-const <%= apps[app] %> = <%= apps[app] %>
+const <%= apps[app] %> = "<%= apps[app] %>"
 <%_ } -%>
 
 module.exports = {
@@ -21,7 +21,7 @@ module.exports = {
 			ts: `./${src}/${apps}/${<%= apps[app] %>}/**/*.ts`,
 			spec: `./${src}/${apps}/${<%= apps[app] %>}/**/*.spec.ts`,
 			scss: `./${src}/${apps}/${<%= apps[app] %>}/**/*.scss`
-		}<% if (app + 1 < apps.length) { %>,<% } %>
+		}<% if (app < apps.length) { %>,<% } %>
 		<%_ } -%>
 	},
 	build: {
@@ -52,7 +52,7 @@ module.exports = {
 		<%= apps[app] %>: {
 			templateName: "<%= apps[app] %>.templates",
 			path: `./${wwwroot}/${apps}/${<%= apps[app] %>}`
-		}<% if (app + 1 < apps.length) { %>,<% } %>
+		}<% if (app < apps.length) { %>,<% } %>
 		<%_ } -%>
 	},
 	cleanPaths: [
@@ -62,12 +62,7 @@ module.exports = {
 	lint: {
 		style: "stylelint.yml"
 	},
-	tsConfig: {
-		module: "amd",
-		target: "es5",
-		noImplicitAny: false,
-		removeComments: false,
-		declaration: true,
-		sourceMap: false
+	typings: {
+		definitions: "./typings/**/*.d.ts"
 	}
 };

@@ -49,6 +49,9 @@ module.exports = generators.Base.extend({
 				}
 			);
 		},
+		bsConfig: function () {
+			this.copy("_bs-config.json", "bs-config.json");
+		},
 		gulp: function () {
 			this.copy("_gulpfile.js", "gulpfile.js");
 			this.fs.copyTpl(
@@ -71,6 +74,13 @@ module.exports = generators.Base.extend({
 			this.fs.copyTpl(
 				this.templatePath("_gulp/_tasks/_copy/_styles.js"),
 				this.destinationPath("gulp/tasks/copy/styles.js"),
+				{
+					apps: settings.apps
+				}
+			);
+			this.fs.copyTpl(
+				this.templatePath("_gulp/_tasks/_copy/_html.js"),
+				this.destinationPath("gulp/tasks/copy/html.js"),
 				{
 					apps: settings.apps
 				}
@@ -134,8 +144,8 @@ module.exports = generators.Base.extend({
 		},
 		wwwroot: function () {
 			this.fs.copyTpl(
-				this.templatePath("_gulp/_tasks/_wwwroot/_system.config.js"),
-				this.destinationPath("gulp/tasks/wwwroot/system.config.js"),
+				this.templatePath("_wwwroot/_systemjs.config.js"),
+				this.destinationPath("wwwroot/systemjs.config.js"),
 				{
 					apps: settings.apps
 				}
@@ -172,11 +182,41 @@ module.exports = generators.Base.extend({
 		tsconfig: function () {
 			this.copy("_tsconfig.json", "tsconfig.json");
 		},
-		tsd: function () {
-			this.copy("_tsd.json", "tsd.json");
-		},
 		tslint: function () {
 			this.copy("_tslint.json", "tslint.json");
+		},
+		typings: function () {
+			this.copy("_typings.json", "typings.json");
+		},
+		index: function () {
+			this.copy("_src/_index.html", "src/index.html");
+		},
+		appComponentHtml: function () {
+			this.copy("_src/_apps/_app/_app.component.html", "src/apps/app/app.component.html");
+		},
+		appComponentScss: function () {
+			this.copy("_src/_apps/_app/_app.component.scss", "src/apps/app/app.component.scss");
+		},
+		appComponentTs: function () {
+			this.copy("_src/_apps/_app/_app.component.ts", "src/apps/app/app.component.ts");
+		},
+		commonScss: function () {
+			this.copy("_src/_apps/_common/_colours.scss", "src/apps/common/colours.scss");
+		},
+		mainTs: function () {
+			this.copy("_src/_apps/_main/_main.ts", "src/apps/main/main.ts");
+		},
+		servicesSampleService: function () {
+			this.copy("_src/_apps/_services/_sample.service.ts", "src/apps/services/sample.service.ts");
+		},
+		startpageComponentHtml: function () {
+			this.copy("_src/_apps/_startpage/_startpage.component.html", "src/apps/startpage/startpage.component.html");
+		},
+		startpageComponentScss: function () {
+			this.copy("_src/_apps/_startpage/_startpage.component.scss", "src/apps/startpage/startpage.component.scss");
+		},
+		startpageComponentTs: function () {
+			this.copy("_src/_apps/_startpage/_startpage.component.ts", "src/apps/startpage/startpage.component.ts");
 		}
 	},
 

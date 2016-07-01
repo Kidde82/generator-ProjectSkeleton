@@ -3,8 +3,9 @@ var plugins = {};
 var config = {};
 
 function compile(src, dest) {
-	var result = gulp.src(src)
-		.pipe(plugins.typescript(config.tsConfig))
+	var tsProject = plugins.typescript.createProject("tsconfig.json");
+	var result = gulp.src([src])
+		.pipe(plugins.typescript(tsProject));
 
 	return result.js
 		.pipe(plugins.ngAnnotate())

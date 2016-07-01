@@ -2,9 +2,10 @@ var gulp = require("gulp");
 var plugins = {};
 var config = {};
 
-function compile(src, dest) {
-	var result = gulp.src(src)
-		.pipe(plugins.typescript(config.tsConfig))
+function compile(src, dest, typings) {
+	var tsProject = plugins.typescript.createProject("tsconfig.json");
+	var result = gulp.src([src, typings])
+		.pipe(plugins.typescript(tsProject));
 
 	return result.js
 		.pipe(plugins.ngAnnotate())
@@ -24,6 +25,6 @@ module.exports = function(callback) {
 };
 <% for (app in apps) { %>
 gulp.task("script:compile:<%= apps[app] %>", () => {
-	return compile(config.src.<%= apps[app] %>.ts, config.build.<%= apps[app] %>.path);
+	return compile(config.src.<%= apps[app] %>.ts, config.build.<%= apps[app] %>.path, config.typings.definitions);
 });
 <% } %>
